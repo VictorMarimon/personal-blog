@@ -12,6 +12,37 @@ export function idValidator(fieldName = 'id') {
     ];
 }
 
+export function signInValidator() {
+    return [
+        body('email')
+            .optional()
+            .isString()
+            .isLength({ max: 128 })
+            .withMessage('emailTooLong')
+            .isEmail()
+            .withMessage('emailInvalid'),
+        body('username')
+            .optional()
+            .isString()
+            .isLength({ max: 128 })
+            .withMessage('usernameTooLong'),
+        body('password')
+            .exists()
+            .withMessage('passwordMissing')
+            .notEmpty()
+            .withMessage('passwordEmpty')
+            .isString()
+            .withMessage('passwordInvalid'),
+        body('rememberMe')
+            .exists()
+            .withMessage('rememberMeMissing')
+            .notEmpty()
+            .withMessage('rememberMeEmpty')
+            .isBoolean()
+            .withMessage('rememberMeInvalid'),
+    ];
+}
+
 export function validateCreateOrUpdateUser() {
     return [
         body('admin')

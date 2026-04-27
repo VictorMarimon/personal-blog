@@ -1,3 +1,9 @@
+// constants for the rate limiter
+export const PATHS_TO_SKIP_FOR_RATE_LIMITING = [
+    // example of how to skip a specific path and method from rate limiting
+    // { path: '/api/xxxxxx', method: 'POST' },
+];
+
 // .env
 
 export const APP_NAME = process.env.APP_NAME;

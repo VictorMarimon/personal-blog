@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs';
 import mongoose from 'mongoose';
 
-const userSchema = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
     admin: {
         type: Boolean,
         default: false,
@@ -33,11 +33,11 @@ const userSchema = new mongoose.Schema({
     timestamps: true,
 });
 
-userSchema.pre('save', async function () {
+usersSchema.pre('save', async function () {
     this.password = await bcrypt.hash(this.password, 10);
 });
 
-userSchema.pre('findOneAndUpdate', async function () {
+usersSchema.pre('findOneAndUpdate', async function () {
     const update = this.getUpdate();
 
     if (update.password) {
@@ -45,27 +45,31 @@ userSchema.pre('findOneAndUpdate', async function () {
     }
 });
 
-userSchema.pre('find', function () {
-    // we only return the users that are not deleted (deletedAt is null)
+usersSchema.pre('findOne', function () {
+    // we only return the user that is not deleted (deletedAt is null)
     this.where({ deletedAt: null });
 });
 
-userSchema.post('save', function (doc) {
-    // we remove the password from the response for security reasons
-    doc.password = undefined;
-    doc.deletedAt = undefined;
+usersSchema.pre('find', function () {
+    this.where({ deletedAt: null });
 });
 
-userSchema.post('find', function (docs) {
-    if (!docs) return;
-    
-    const rows = Array.isArray(docs) ? docs : [docs];
+usersSchema.post('save', function (user) {
+    // we remove the password from the response for security reasons
+    user.password = undefined;
+    user.deletedAt = undefined;
+});
 
-    rows.forEach(doc => {
+usersSchema.post('find', function (users) {
+    if (!users) return;
+    
+    const rows = Array.isArray(users) ? users : [users];
+
+    rows.forEach((user) => {
         // we remove the password from the response for security reasons
-        doc.password = undefined;
-        doc.deletedAt = undefined;
+        user.password = undefined;
+        user.deletedAt = undefined;
     });
 });
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model('User', usersSchema);
