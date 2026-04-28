@@ -59,6 +59,19 @@ export function routeValidation({ onlyAdmin = false } = {}) {
                 return res.status(403).json({ error: 'roleAccessDenied' });
             }
 
+            // we check if the user still exists in the database and if their account is active
+            const user = await usersModel.findById(req.user.id);
+            if (!user) {
+                clearAuthCookiesValidator(res, 'eToken');
+                return res.status(404).json({ error: 'userNotFound' });
+            }
+
+            // if the user's account is not active, we clear the auth cookies and return an error
+            if (user.status !== 'active') {
+                clearAuthCookiesValidator(res, 'eToken');
+                return res.status(403).json({ error: 'accountInactive' });
+            }
+
             return next();
         } catch (error) {
             return res.status(401).json({ error: 'unauthorized' });
