@@ -1,14 +1,22 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import CardActionArea from "@mui/material/CardActionArea";
-import CardActions from "@mui/material/CardActions";
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActionArea from '@mui/material/CardActionArea';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import ShareIcon from '@mui/icons-material/Share';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+
+import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Article({ date, title, content, type }) {
+  const { t, i18n } = useTranslation();
+
+  useEffect(() => {}, [i18n]);
+
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card>
       <CardActionArea>
         {type ? (
           <Typography variant="caption" gutterBottom sx={{ display: 'block' }}>
@@ -22,29 +30,22 @@ export default function Article({ date, title, content, type }) {
           alt="green iguana"
         /> */}
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant='h5' component='div'>
             {title}
           </Typography>
-          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+          <Typography variant='body2' sx={{ color: 'text.secondary' }}>
             {content}
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Typography
-          variant="caption"
-          display="block"
-          sx={{ textAlign: "right", p: 1, color: "text.secondary" }}
-        >
+      {/* ============ BOTTOM SECTION ============ */}
+      <CardActions sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Tooltip title={t('article.bottom.share')}>
+            <IconButton>
+              <ShareIcon />
+            </IconButton>
+          </Tooltip>
+        <Typography variant='caption' display='block' sx={{ textAlign: 'right', p: 1, color: 'text.secondary' }}>
           {date}
         </Typography>
       </CardActions>

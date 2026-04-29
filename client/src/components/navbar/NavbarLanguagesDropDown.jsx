@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+
 import { Menu, MenuItem, IconButton } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
@@ -13,14 +14,8 @@ const Flag = styled.img`
 `;
 
 const languageOptions = {
-    en: {
-        icon: '/public/flags/us.png',
-        name: 'english',
-    },
-    es: {
-        icon: '/public/flags/co.png',
-        name: 'spanish',
-    },
+    en: { icon: '/flags/us.png', name: 'english' },
+    es: { icon: '/flags/co.png', name: 'spanish' },
 };
 
 /**
@@ -64,9 +59,7 @@ const NavbarLanguagesDropdown = () => {
                 aria-owns={anchorMenu ? 'menu-appbar' : undefined}
                 onClick={toggleMenu}
                 size="large"
-                sx={{
-                    px: '12px',
-                }}
+                sx={{ px: '12px' }}
             >
                 <Flag src={selectedLanguage.icon} alt={selectedLanguage.name} />
             </IconButton>
@@ -76,13 +69,7 @@ const NavbarLanguagesDropdown = () => {
                 anchorEl={anchorMenu}
                 open={Boolean(anchorMenu)}
                 onClose={closeMenu}
-                slotProps={{
-                    paper: {
-                        sx: {
-                            border: `1px solid #999999`,
-                        },
-                    },
-                }}
+                slotProps={{ paper: { sx: { border: `1px solid #999999` } } }}
             >
                 {Object.keys(languageOptions).map((language) => (
                     <MenuItem
