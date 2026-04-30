@@ -1,23 +1,17 @@
-import * as React from 'react';
-import { alpha, styled } from '@mui/material/styles';
-import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
+import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
 import Container from '@mui/material/Container';
-import Divider from '@mui/material/Divider';
-import MenuItem from '@mui/material/MenuItem';
-import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import { useEffect } from 'react';
+import Toolbar from '@mui/material/Toolbar';
+import { alpha, styled } from '@mui/material/styles';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-import ColorModeIconDropdown from '../customization/ColorModelIconDropDown';
-import PersonalBlogIcon from '../icons/SistemarkIcon';
-import Grid from '@mui/material/Grid';
 import NavbarLanguagesDropdown from './NavbarLanguagesDropDown';
+import NavbarDrawer from './Drawer';
+import PersonalBlogIcon from '../icons/SistemarkIcon';
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -40,7 +34,7 @@ function NavBar() {
 
   useEffect(() => {
   }, [i18n]);
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -91,66 +85,24 @@ function NavBar() {
               alignItems: 'center',
             }}
           >
+            {/* ============ SIGN IN ============ */}
             <Button color="primary" variant="text" size="small">
               {t('navbar.center.sign-in')}
             </Button>
+            {/* ============ SIGN UP ============ */}
             <Button color="primary" variant="contained" size="small">
               {t('navbar.center.sign-up')}
             </Button>
-            <ColorModeIconDropdown />
             {/* ============ LANGUAGE DROPDOWN ============ */}
-            <Grid container spacing={1} >
-                <NavbarLanguagesDropdown />
-            </Grid>
+            <NavbarLanguagesDropdown />
           </Box>
           {/* ============ RIGHT SECTION (MOBILE) ============ */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            <ColorModeIconDropdown size="medium" />
+            <NavbarLanguagesDropdown />
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
-            <Drawer
-              anchor="top"
-              open={open}
-              onClose={toggleDrawer(false)}
-              slotProps={{
-                paper: {
-                  sx: {
-                    top: 'var(--template-frame-height, 0px)',
-                  },
-                },
-              }}
-            >
-              <Box sx={{ p: 2, backgroundColor: 'background.default' }}>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'flex-end',
-                  }}
-                >
-                  <IconButton onClick={toggleDrawer(false)}>
-                    <CloseRoundedIcon />
-                  </IconButton>
-                </Box>
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
-                <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
-                <Divider sx={{ my: 3 }} />
-                <MenuItem>
-                  <Button color="primary" variant="contained" fullWidth>
-                    Sign up
-                  </Button>
-                </MenuItem>
-                <MenuItem>
-                  <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
-                  </Button>
-                </MenuItem>
-              </Box>
-            </Drawer>
+            <NavbarDrawer open={open} toggleDrawer={toggleDrawer} />
           </Box>
         </StyledToolbar>
       </Container>

@@ -1,11 +1,11 @@
-import './App.css';
-import './languages/i18n';
-import articles from './assets/data/articles';
-import CustomPagination from './components/pagination/pagination';
-import Footer from './components/footer/footer';
-import MainArticle from './components/posts/MainArticle';
-import MansoryArticle from './components/posts/MansoryArticle';
-import NavBar from './components/navbar/Navbar';
+import "./App.css";
+import Footer from "./components/footer/footer";
+import NavBar from "./components/navbar/Navbar";
+import "./languages/i18n";
+import articles from "./assets/data/articles";
+import CustomPagination from "./components/pagination/pagination";
+import MainArticle from "./components/posts/MainArticle";
+import MansoryArticle from "./components/posts/MansoryArticle";
 
 function App() {
   return (
