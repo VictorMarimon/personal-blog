@@ -1,99 +1,99 @@
-import { body, param, query, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator'
 
-export function idValidator(fieldName = 'id') {
-    return [
-        param(fieldName)
-            .exists()
-            .withMessage(`${fieldName}Missing`)
-            .notEmpty()
-            .withMessage(`${fieldName}Empty`)
-            .isMongoId()
-            .withMessage(`${fieldName}Invalid`),
-    ];
+export function idValidator (fieldName = 'id') {
+  return [
+    param(fieldName)
+      .exists()
+      .withMessage(`${fieldName}Missing`)
+      .notEmpty()
+      .withMessage(`${fieldName}Empty`)
+      .isMongoId()
+      .withMessage(`${fieldName}Invalid`)
+  ]
 }
 
-export function signInValidator() {
-    return [
-        body('email')
-            .optional()
-            .isString()
-            .isLength({ max: 128 })
-            .withMessage('emailTooLong')
-            .isEmail()
-            .withMessage('emailInvalid'),
-        body('username')
-            .optional()
-            .isString()
-            .isLength({ max: 128 })
-            .withMessage('usernameTooLong'),
-        body('password')
-            .exists()
-            .withMessage('passwordMissing')
-            .notEmpty()
-            .withMessage('passwordEmpty')
-            .isString()
-            .withMessage('passwordInvalid'),
-        body('rememberMe')
-            .exists()
-            .withMessage('rememberMeMissing')
-            .notEmpty()
-            .withMessage('rememberMeEmpty')
-            .isBoolean()
-            .withMessage('rememberMeInvalid'),
-    ];
+export function signInValidator () {
+  return [
+    body('email')
+      .optional()
+      .isString()
+      .isLength({ max: 128 })
+      .withMessage('emailTooLong')
+      .isEmail()
+      .withMessage('emailInvalid'),
+    body('username')
+      .optional()
+      .isString()
+      .isLength({ max: 128 })
+      .withMessage('usernameTooLong'),
+    body('password')
+      .exists()
+      .withMessage('passwordMissing')
+      .notEmpty()
+      .withMessage('passwordEmpty')
+      .isString()
+      .withMessage('passwordInvalid'),
+    body('rememberMe')
+      .exists()
+      .withMessage('rememberMeMissing')
+      .notEmpty()
+      .withMessage('rememberMeEmpty')
+      .isBoolean()
+      .withMessage('rememberMeInvalid')
+  ]
 }
 
-export function validateCreateOrUpdateUser() {
-    return [
-        body('admin')
-            .exists()
-            .withMessage('adminMissing')
-            .notEmpty()
-            .withMessage('adminEmpty')
-            .isBoolean()
-            .withMessage('adminInvalid'),
-        body('email')
-            .exists()
-            .withMessage('emailMissing')
-            .notEmpty()
-            .withMessage('emailEmpty')
-            .isEmail()
-            .withMessage('emailInvalid'),
-        body('password')
-            .exists()
-            .withMessage('passwordMissing')
-            .notEmpty()
-            .withMessage('passwordEmpty')
-            .isLength({ min: 6 })
-            .withMessage('passwordTooShort'),
-        body('status')
-            .exists()
-            .withMessage('statusMissing')
-            .notEmpty()
-            .withMessage('statusEmpty')
-            .isIn(['active', 'inactive'])
-            .withMessage('statusInvalid'),
-        body('username')
-            .exists()
-            .withMessage('usernameMissing')
-            .notEmpty()
-            .withMessage('usernameEmpty')
-            .isLength({ min: 3 })
-            .withMessage('usernameTooShort'),
-    ];
+export function validateCreateOrUpdateUser () {
+  return [
+    body('admin')
+      .exists()
+      .withMessage('adminMissing')
+      .notEmpty()
+      .withMessage('adminEmpty')
+      .isBoolean()
+      .withMessage('adminInvalid'),
+    body('email')
+      .exists()
+      .withMessage('emailMissing')
+      .notEmpty()
+      .withMessage('emailEmpty')
+      .isEmail()
+      .withMessage('emailInvalid'),
+    body('password')
+      .exists()
+      .withMessage('passwordMissing')
+      .notEmpty()
+      .withMessage('passwordEmpty')
+      .isLength({ min: 6 })
+      .withMessage('passwordTooShort'),
+    body('status')
+      .exists()
+      .withMessage('statusMissing')
+      .notEmpty()
+      .withMessage('statusEmpty')
+      .isIn(['active', 'inactive'])
+      .withMessage('statusInvalid'),
+    body('username')
+      .exists()
+      .withMessage('usernameMissing')
+      .notEmpty()
+      .withMessage('usernameEmpty')
+      .isLength({ min: 3 })
+      .withMessage('usernameTooShort')
+  ]
 }
 
-export function validateErrors(req, res, next) {
-    try {
-        const errors = validationResult(req);
+export function validateErrors (req, res, next) {
+  try {
+    const errors = validationResult(req)
 
-        if (errors.isEmpty()) return next();
+    if (errors.isEmpty()) return next()
 
-        const extractedErrors = [];
-        errors.array().forEach((err) => extractedErrors.push(err.msg));
+    const extractedErrors = []
+    errors.array().forEach((err) => extractedErrors.push(err.msg))
 
-        return res.status(422).json({ error: extractedErrors });
-    } catch (error) {
-        return res.status(500).json({ error: 'internalServerError' });
-    }
+    return res.status(422).json({ error: extractedErrors })
+  } catch (error) {
+    return res.status(500).json({ error: 'internalServerError' })
+  }
 }

@@ -1,50 +1,50 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 const articlesSchema = new mongoose.Schema({
-    content: {
-        type: String,
-        required: true,
-    },
-    date: {
-        type: Date,
-        default: Date.now,
-    },
-    title: {
-        type: String,
-        required: true,
-    },
-    deletedAt: {
-        type: Date,
-        default: null,
-    },
+  content: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  title: {
+    type: String,
+    required: true
+  },
+  deletedAt: {
+    type: Date,
+    default: null
+  }
 }, {
-    timestamps: true,
-});
+  timestamps: true
+})
 
 articlesSchema.pre('findOne', function () {
-    this.where({ deletedAt: null });
-});
+  this.where({ deletedAt: null })
+})
 
 articlesSchema.pre('find', function () {
-    this.where({ deletedAt: null });
-});
+  this.where({ deletedAt: null })
+})
 
 articlesSchema.post('save', function (article) {
-    article.deletedAt = undefined;
-});
+  article.deletedAt = undefined
+})
 
 articlesSchema.post('find', function (articles) {
-    if (!articles) return;
-    
-    const rows = Array.isArray(articles) ? articles : [articles];
+  if (!articles) return
 
-    rows.forEach((article) => {
-        article.deletedAt = undefined;
-    });
-});
+  const rows = Array.isArray(articles) ? articles : [articles]
+
+  rows.forEach((article) => {
+    article.deletedAt = undefined
+  })
+})
 
 articlesSchema.post('findOne', function (article) {
-    article.deletedAt = undefined;
-});
+  article.deletedAt = undefined
+})
 
-export default mongoose.model('Article', articlesSchema);
+export default mongoose.model('Article', articlesSchema)
