@@ -1,125 +1,125 @@
 const articles = [
-    {
-        id: 1,
-        date: '2024-06-01',
-        title: 'Getting Started with React',
-        type: 'featured',
-        content: 'React is a JavaScript library for building user interfaces. In this article we explore the basics of components, props, and state to help you get up and running quickly.',
-    },
-    {
-        id: 2,
-        date: '2024-06-08',
-        title: 'Understanding JavaScript Closures',
-        content: 'Closures are one of the most powerful and misunderstood features of JavaScript. We break down how closures work with practical examples you can apply right away.',
-    },
-    {
-        id: 3,
-        date: '2024-06-15',
-        title: 'A Beginner\'s Guide to CSS Flexbox',
-        content: 'Flexbox makes it easy to design flexible and responsive layout structures. This guide covers the core concepts: flex container, flex items, alignment, and wrapping.',
-    },
-    {
-        id: 4,
-        date: '2024-06-22',
-        title: 'Introduction to TypeScript',
-        content: 'TypeScript adds optional static typing to JavaScript, catching bugs at compile time. Learn how to set it up and start using types, interfaces, and generics in your projects.',
-    },
-    {
-        id: 5,
-        date: '2024-06-29',
-        title: 'Node.js REST API with Express',
-        content: 'Building a REST API has never been simpler. We walk you through creating endpoints, handling middleware, and connecting to a database using Express and Node.js.',
-    },
-    {
-        id: 6,
-        date: '2024-07-06',
-        title: 'State Management with Redux Toolkit',
-        content: 'Redux Toolkit simplifies complex state management in React applications. This article demonstrates setting up a store, writing slices, and using hooks like useSelector and useDispatch.',
-    },
-    {
-        id: 7,
-        date: '2024-07-13',
-        title: 'CSS Grid: Layout Made Easy',
-        content: 'CSS Grid is a two-dimensional layout system that gives you full control over rows and columns. Discover how to build complex page layouts with minimal code.',
-    },
-    {
-        id: 8,
-        date: '2024-07-20',
-        title: 'Async/Await in JavaScript',
-        content: 'Async/await provides a clean syntax for working with Promises. We cover error handling, parallel execution with Promise.all, and common pitfalls to avoid.',
-    },
-    {
-        id: 9,
-        date: '2024-07-27',
-        title: 'Authentication with JWT',
-        content: 'JSON Web Tokens are a compact way to securely transmit information. Learn how to implement authentication and authorization in a Node.js API using JWTs and refresh tokens.',
-    },
-    {
-        id: 10,
-        date: '2024-08-03',
-        title: 'React Custom Hooks',
-        content: 'Custom hooks let you extract and reuse stateful logic across components. We build several real-world examples including useFetch, useLocalStorage, and useDebounce.',
-    },
-    {
-        id: 11,
-        date: '2024-08-10',
-        title: 'Introduction to Docker',
-        content: 'Docker containers make your applications portable and reproducible. This post covers writing a Dockerfile, building images, and running containers for a full-stack project.',
-    },
-    {
-        id: 12,
-        date: '2024-08-17',
-        title: 'Git Workflows for Teams',
-        content: 'A solid Git workflow prevents headaches in collaborative projects. We compare Git Flow, GitHub Flow, and trunk-based development to help you choose the right strategy.',
-    },
-    {
-        id: 13,
-        date: '2024-08-24',
-        title: 'Testing React Apps with Vitest',
-        content: 'Testing gives you confidence when refactoring and shipping new features. Learn how to write unit and integration tests for React components using Vitest and Testing Library.',
-    },
-    {
-        id: 14,
-        date: '2024-08-31',
-        title: 'SQL vs NoSQL: Choosing the Right Database',
-        content: 'Picking the wrong database can haunt you for years. We compare relational databases like PostgreSQL with document stores like MongoDB to help you make an informed decision.',
-    },
-    {
-        id: 15,
-        date: '2024-09-07',
-        title: 'Building Accessible UIs',
-        content: 'Web accessibility ensures everyone can use your product. This article covers semantic HTML, ARIA attributes, keyboard navigation, and how to audit your site with Lighthouse.',
-    },
-    {
-        id: 16,
-        date: '2024-09-14',
-        title: 'Vite: The Next Generation Build Tool',
-        content: 'Vite leverages native ES modules to deliver lightning-fast development builds. Discover its plugin ecosystem, configuration options, and how it compares to Webpack.',
-    },
-    {
-        id: 17,
-        date: '2024-09-21',
-        title: 'Deploying a Full-Stack App to the Cloud',
-        content: 'Taking your app from localhost to production involves several steps. We guide you through containerizing your app, setting up CI/CD, and deploying to a cloud provider.',
-    },
-    {
-        id: 18,
-        date: '2024-09-28',
-        title: 'Performance Optimization in React',
-        content: 'Slow React apps frustrate users and hurt SEO. Learn how to profile renders, apply memoization with React.memo and useMemo, and use code splitting with lazy loading.',
-    },
-    {
-        id: 19,
-        date: '2024-10-05',
-        title: 'Introduction to GraphQL',
-        content: 'GraphQL gives clients the power to request exactly the data they need. We cover queries, mutations, subscriptions, and how to set up a GraphQL server with Apollo.',
-    },
-    {
-        id: 20,
-        date: '2024-10-12',
-        title: 'WebSockets for Real-Time Apps',
-        content: 'Real-time features like live chat and notifications require persistent connections. This article explains how WebSockets work and how to implement them with Socket.io in a Node.js app.',
-    },
-];
+  {
+    id: 1,
+    date: '2024-06-01',
+    title: 'Getting Started with React',
+    type: 'featured',
+    content: 'React is a JavaScript library for building user interfaces. In this article we explore the basics of components, props, and state to help you get up and running quickly.'
+  },
+  {
+    id: 2,
+    date: '2024-06-08',
+    title: 'Understanding JavaScript Closures',
+    content: 'Closures are one of the most powerful and misunderstood features of JavaScript. We break down how closures work with practical examples you can apply right away.'
+  },
+  {
+    id: 3,
+    date: '2024-06-15',
+    title: 'A Beginner\'s Guide to CSS Flexbox',
+    content: 'Flexbox makes it easy to design flexible and responsive layout structures. This guide covers the core concepts: flex container, flex items, alignment, and wrapping.'
+  },
+  {
+    id: 4,
+    date: '2024-06-22',
+    title: 'Introduction to TypeScript',
+    content: 'TypeScript adds optional static typing to JavaScript, catching bugs at compile time. Learn how to set it up and start using types, interfaces, and generics in your projects.'
+  },
+  {
+    id: 5,
+    date: '2024-06-29',
+    title: 'Node.js REST API with Express',
+    content: 'Building a REST API has never been simpler. We walk you through creating endpoints, handling middleware, and connecting to a database using Express and Node.js.'
+  },
+  {
+    id: 6,
+    date: '2024-07-06',
+    title: 'State Management with Redux Toolkit',
+    content: 'Redux Toolkit simplifies complex state management in React applications. This article demonstrates setting up a store, writing slices, and using hooks like useSelector and useDispatch.'
+  },
+  {
+    id: 7,
+    date: '2024-07-13',
+    title: 'CSS Grid: Layout Made Easy',
+    content: 'CSS Grid is a two-dimensional layout system that gives you full control over rows and columns. Discover how to build complex page layouts with minimal code.'
+  },
+  {
+    id: 8,
+    date: '2024-07-20',
+    title: 'Async/Await in JavaScript',
+    content: 'Async/await provides a clean syntax for working with Promises. We cover error handling, parallel execution with Promise.all, and common pitfalls to avoid.'
+  },
+  {
+    id: 9,
+    date: '2024-07-27',
+    title: 'Authentication with JWT',
+    content: 'JSON Web Tokens are a compact way to securely transmit information. Learn how to implement authentication and authorization in a Node.js API using JWTs and refresh tokens.'
+  },
+  {
+    id: 10,
+    date: '2024-08-03',
+    title: 'React Custom Hooks',
+    content: 'Custom hooks let you extract and reuse stateful logic across components. We build several real-world examples including useFetch, useLocalStorage, and useDebounce.'
+  },
+  {
+    id: 11,
+    date: '2024-08-10',
+    title: 'Introduction to Docker',
+    content: 'Docker containers make your applications portable and reproducible. This post covers writing a Dockerfile, building images, and running containers for a full-stack project.'
+  },
+  {
+    id: 12,
+    date: '2024-08-17',
+    title: 'Git Workflows for Teams',
+    content: 'A solid Git workflow prevents headaches in collaborative projects. We compare Git Flow, GitHub Flow, and trunk-based development to help you choose the right strategy.'
+  },
+  {
+    id: 13,
+    date: '2024-08-24',
+    title: 'Testing React Apps with Vitest',
+    content: 'Testing gives you confidence when refactoring and shipping new features. Learn how to write unit and integration tests for React components using Vitest and Testing Library.'
+  },
+  {
+    id: 14,
+    date: '2024-08-31',
+    title: 'SQL vs NoSQL: Choosing the Right Database',
+    content: 'Picking the wrong database can haunt you for years. We compare relational databases like PostgreSQL with document stores like MongoDB to help you make an informed decision.'
+  },
+  {
+    id: 15,
+    date: '2024-09-07',
+    title: 'Building Accessible UIs',
+    content: 'Web accessibility ensures everyone can use your product. This article covers semantic HTML, ARIA attributes, keyboard navigation, and how to audit your site with Lighthouse.'
+  },
+  {
+    id: 16,
+    date: '2024-09-14',
+    title: 'Vite: The Next Generation Build Tool',
+    content: 'Vite leverages native ES modules to deliver lightning-fast development builds. Discover its plugin ecosystem, configuration options, and how it compares to Webpack.'
+  },
+  {
+    id: 17,
+    date: '2024-09-21',
+    title: 'Deploying a Full-Stack App to the Cloud',
+    content: 'Taking your app from localhost to production involves several steps. We guide you through containerizing your app, setting up CI/CD, and deploying to a cloud provider.'
+  },
+  {
+    id: 18,
+    date: '2024-09-28',
+    title: 'Performance Optimization in React',
+    content: 'Slow React apps frustrate users and hurt SEO. Learn how to profile renders, apply memoization with React.memo and useMemo, and use code splitting with lazy loading.'
+  },
+  {
+    id: 19,
+    date: '2024-10-05',
+    title: 'Introduction to GraphQL',
+    content: 'GraphQL gives clients the power to request exactly the data they need. We cover queries, mutations, subscriptions, and how to set up a GraphQL server with Apollo.'
+  },
+  {
+    id: 20,
+    date: '2024-10-12',
+    title: 'WebSockets for Real-Time Apps',
+    content: 'Real-time features like live chat and notifications require persistent connections. This article explains how WebSockets work and how to implement them with Socket.io in a Node.js app.'
+  }
+]
 
-export default articles;
+export default articles

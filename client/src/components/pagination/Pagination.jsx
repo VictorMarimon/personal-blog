@@ -1,10 +1,10 @@
-import Pagination from '@mui/material/Pagination';
-import PaginationItem from '@mui/material/PaginationItem';
-import Stack from '@mui/material/Stack';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import Pagination from '@mui/material/Pagination'
+import PaginationItem from '@mui/material/PaginationItem'
+import Stack from '@mui/material/Stack'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
-function CustomPagination({ totalPages, currentPage, onPageChange }) {
+function CustomPagination ({ totalPages, currentPage, onPageChange }) {
   return (
     <Stack spacing={2}>
       <Pagination
@@ -19,7 +19,7 @@ function CustomPagination({ totalPages, currentPage, onPageChange }) {
         )}
       />
     </Stack>
-  );
+  )
 }
 
-export default CustomPagination;
+export default CustomPagination

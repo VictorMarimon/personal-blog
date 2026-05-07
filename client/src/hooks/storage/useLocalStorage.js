@@ -13,19 +13,19 @@
  * removeItem('theme', 'token');
  */
 const useLocalStorage = () => {
-    const theme = localStorage.getItem('theme');
+  const theme = localStorage.getItem('theme')
 
-    const setItem = (item, value) => localStorage.setItem(item, value);
+  const setItem = (item, value) => localStorage.setItem(item, value)
 
-    const removeItem = (...items) => {
-        items.forEach((i) => localStorage.removeItem(i));
-    };
+  const removeItem = (...items) => {
+    items.forEach((i) => localStorage.removeItem(i))
+  }
 
-    return {
-        theme,
-        setItem,
-        removeItem,
-    };
-};
+  return {
+    theme,
+    setItem,
+    removeItem
+  }
+}
 
-export default useLocalStorage;
+export default useLocalStorage

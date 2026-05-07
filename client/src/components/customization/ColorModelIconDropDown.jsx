@@ -1,30 +1,31 @@
-import * as React from 'react';
-import DarkModeIcon from '@mui/icons-material/DarkModeRounded';
-import LightModeIcon from '@mui/icons-material/LightModeRounded';
-import Box from '@mui/material/Box';
-import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { useColorScheme } from '@mui/material/styles';
+import Box from '@mui/material/Box'
+import DarkModeIcon from '@mui/icons-material/DarkModeRounded'
+import IconButton from '@mui/material/IconButton'
+import LightModeIcon from '@mui/icons-material/LightModeRounded'
+import Menu from '@mui/material/Menu'
+import MenuItem from '@mui/material/MenuItem'
 
-export default function ColorModeIconDropdown(props) {
-  const { mode, systemMode, setMode } = useColorScheme();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
+import { useColorScheme } from '@mui/material/styles'
+import { useState } from 'react'
+
+export default function ColorModeIconDropdown (props) {
+  const { mode, systemMode, setMode } = useColorScheme()
+  const [anchorEl, setAnchorEl] = useState(null)
+  const open = Boolean(anchorEl)
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
+    setAnchorEl(event.currentTarget)
+  }
   const handleClose = () => {
-    setAnchorEl(null);
-  };
+    setAnchorEl(null)
+  }
   const handleMode = (targetMode) => () => {
-    setMode(targetMode);
-    handleClose();
-  };
+    setMode(targetMode)
+    handleClose()
+  }
   if (!mode) {
     return (
       <Box
-        data-screenshot="toggle-mode"
+        data-screenshot='toggle-mode'
         sx={(theme) => ({
           verticalAlign: 'bottom',
           display: 'inline-flex',
@@ -32,25 +33,26 @@ export default function ColorModeIconDropdown(props) {
           height: '2.25rem',
           borderRadius: (theme.vars || theme).shape.borderRadius,
           border: '1px solid',
-          borderColor: (theme.vars || theme).palette.divider,
+          borderColor: (theme.vars || theme).palette.divider
         })}
       />
-    );
+    )
   }
-  const resolvedMode = systemMode || mode;
+  const resolvedMode = systemMode || mode
   const icon = {
     light: <LightModeIcon />,
-    dark: <DarkModeIcon />,
-  }[resolvedMode];
+    dark: <DarkModeIcon />
+  }[resolvedMode]
+
   return (
-    <React.Fragment>
+    <>
       <IconButton
-        data-screenshot="toggle-mode"
+        data-screenshot='toggle-mode'
         onClick={handleClick}
         disableRipple
-        size="small"
+        size='small'
         aria-controls={open ? 'color-scheme-menu' : undefined}
-        aria-haspopup="true"
+        aria-haspopup='true'
         aria-expanded={open ? 'true' : undefined}
         {...props}
       >
@@ -58,7 +60,7 @@ export default function ColorModeIconDropdown(props) {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        id="account-menu"
+        id='account-menu'
         open={open}
         onClose={handleClose}
         onClick={handleClose}
@@ -67,9 +69,9 @@ export default function ColorModeIconDropdown(props) {
             variant: 'outlined',
             elevation: 0,
             sx: {
-              my: '4px',
-            },
-          },
+              my: '4px'
+            }
+          }
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
@@ -84,6 +86,6 @@ export default function ColorModeIconDropdown(props) {
           Dark
         </MenuItem>
       </Menu>
-    </React.Fragment>
-  );
+    </>
+  )
 }

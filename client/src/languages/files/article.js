@@ -1,12 +1,12 @@
 export default {
-    en: {
-        bottom: {
-            share: 'Share',
-        }
-    },
-    es: {
-        bottom: {
-            share: 'Compartir',
-        }
-    },
-};
+  en: {
+    bottom: {
+      share: 'Share'
+    }
+  },
+  es: {
+    bottom: {
+      share: 'Compartir'
+    }
+  }
+}

@@ -1,22 +1,21 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from 'react'
+import styled from '@emotion/styled'
 
-import { Menu, MenuItem, IconButton } from '@mui/material';
-import { useTranslation } from 'react-i18next';
+import { Menu, MenuItem, IconButton } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 
-import useLocalStorage from '../../hooks/storage/useLocalStorage';
-
+import useLocalStorage from '../../hooks/storage/useLocalStorage'
 
 const Flag = styled.img`
   border-radius: 50%;
   width: 22px;
   height: 22px;
-`;
+`
 
 const languageOptions = {
-    en: { icon: '/flags/us.png', name: 'english' },
-    es: { icon: '/flags/co.png', name: 'spanish' },
-};
+  en: { icon: '/flags/us.png', name: 'english' },
+  es: { icon: '/flags/co.png', name: 'spanish' }
+}
 
 /**
  * NavbarLanguagesDropdown component provides a language selection dropdown
@@ -33,55 +32,49 @@ const languageOptions = {
  */
 
 const NavbarLanguagesDropdown = () => {
-    const { t, i18n } = useTranslation();
-    const { setItem } = useLocalStorage();
-    const [anchorMenu, setAnchorMenu] = React.useState(null);
+  const { t, i18n } = useTranslation()
+  const { setItem } = useLocalStorage()
+  const [anchorMenu, setAnchorMenu] = React.useState(null)
+  const selectedLanguage = languageOptions[i18n.language]
+  const toggleMenu = (event) => {
+    setAnchorMenu(event.currentTarget)
+  }
+  const closeMenu = () => {
+    setAnchorMenu(null)
+  }
+  const handleLanguageChange = (language) => {
+    i18n.changeLanguage(language)
+    setItem('language', language)
+    closeMenu()
+  }
+  return (
+    <>
+      <IconButton
+        aria-owns={anchorMenu ? 'menu-appbar' : undefined}
+        onClick={toggleMenu}
+        size='large'
+        sx={{ px: '12px' }}
+      >
+        <Flag src={selectedLanguage.icon} alt={selectedLanguage.name} />
+      </IconButton>
+      <Menu
+        id='menu-appbar'
+        anchorEl={anchorMenu}
+        open={Boolean(anchorMenu)}
+        onClose={closeMenu}
+        slotProps={{ paper: { sx: { border: '1px solid #999999' } } }}
+      >
+        {Object.keys(languageOptions).map((language) => (
+          <MenuItem
+            key={language}
+            onClick={() => handleLanguageChange(language)}
+          >
+            {t(`common.languages.${languageOptions[language].name}`)}
+          </MenuItem>
+        ))}
+      </Menu>
+    </>
+  )
+}
 
-    const selectedLanguage = languageOptions[i18n.language];
-
-    const toggleMenu = (event) => {
-        setAnchorMenu(event.currentTarget);
-    };
-
-    const closeMenu = () => {
-        setAnchorMenu(null);
-    };
-
-    const handleLanguageChange = (language) => {
-        i18n.changeLanguage(language);
-        setItem('language', language);
-        closeMenu();
-    };
-
-    return (
-        <>
-            <IconButton
-                aria-owns={anchorMenu ? 'menu-appbar' : undefined}
-                onClick={toggleMenu}
-                size="large"
-                sx={{ px: '12px' }}
-            >
-                <Flag src={selectedLanguage.icon} alt={selectedLanguage.name} />
-            </IconButton>
-
-            <Menu
-                id="menu-appbar"
-                anchorEl={anchorMenu}
-                open={Boolean(anchorMenu)}
-                onClose={closeMenu}
-                slotProps={{ paper: { sx: { border: `1px solid #999999` } } }}
-            >
-                {Object.keys(languageOptions).map((language) => (
-                    <MenuItem
-                        key={language}
-                        onClick={() => handleLanguageChange(language)}
-                    >
-                        {t(`common.languages.${languageOptions[language].name}`)}
-                    </MenuItem>
-                ))}
-            </Menu>
-        </>
-    );
-};
-
-export default NavbarLanguagesDropdown;
+export default NavbarLanguagesDropdown

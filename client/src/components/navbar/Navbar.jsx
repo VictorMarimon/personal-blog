@@ -1,17 +1,18 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import Toolbar from '@mui/material/Toolbar';
-import { alpha, styled } from '@mui/material/styles';
-import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import AppBar from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Button from '@mui/material/Button'
+import Container from '@mui/material/Container'
+import IconButton from '@mui/material/IconButton'
+import MenuIcon from '@mui/icons-material/Menu'
+import Toolbar from '@mui/material/Toolbar'
 
-import NavbarLanguagesDropdown from './NavbarLanguagesDropDown';
-import NavbarDrawer from './Drawer';
-import PersonalBlogIcon from '../icons/SistemarkIcon';
+import { alpha, styled } from '@mui/material/styles'
+import { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
+import NavbarLanguagesDropdown from './NavbarLanguagesDropDown'
+import NavbarDrawer from './Drawer'
+import PersonalBlogIcon from '../icons/SistemarkIcon'
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   display: 'flex',
@@ -26,53 +27,53 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
     : alpha(theme.palette.background.default, 0.4),
   boxShadow: (theme.vars || theme).shadows[1],
-  padding: '8px 12px',
-}));
+  padding: '8px 12px'
+}))
 
-function NavBar() {
-  const { t, i18n } = useTranslation();
+function NavBar () {
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
-  }, [i18n]);
-  const [open, setOpen] = useState(false);
+  }, [i18n])
+  const [open, setOpen] = useState(false)
 
   const toggleDrawer = (newOpen) => () => {
-    setOpen(newOpen);
-  };
+    setOpen(newOpen)
+  }
 
   return (
     <AppBar
-      position="fixed"
+      position='fixed'
       enableColorOnDark
       sx={{
         boxShadow: 0,
         bgcolor: 'transparent',
         backgroundImage: 'none',
-        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+        mt: 'calc(var(--template-frame-height, 0px) + 28px)'
       }}
     >
-      <Container maxWidth="lg">
-        <StyledToolbar variant="dense" disableGutters>
+      <Container maxWidth='lg'>
+        <StyledToolbar variant='dense' disableGutters>
           {/* ============ LEFT SECTION ============ */}
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <PersonalBlogIcon />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
+              <Button variant='text' color='info' size='small'>
                 Features
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant='text' color='info' size='small'>
                 Testimonials
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant='text' color='info' size='small'>
                 Highlights
               </Button>
-              <Button variant="text" color="info" size="small">
+              <Button variant='text' color='info' size='small'>
                 Pricing
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button variant='text' color='info' size='small' sx={{ minWidth: 0 }}>
                 FAQ
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button variant='text' color='info' size='small' sx={{ minWidth: 0 }}>
                 Blog
               </Button>
             </Box>
@@ -82,15 +83,15 @@ function NavBar() {
             sx={{
               display: { xs: 'none', md: 'flex' },
               gap: 1,
-              alignItems: 'center',
+              alignItems: 'center'
             }}
           >
             {/* ============ SIGN IN ============ */}
-            <Button color="primary" variant="text" size="small">
+            <Button color='primary' variant='text' size='small'>
               {t('navbar.center.sign-in')}
             </Button>
             {/* ============ SIGN UP ============ */}
-            <Button color="primary" variant="contained" size="small">
+            <Button color='primary' variant='contained' size='small'>
               {t('navbar.center.sign-up')}
             </Button>
             {/* ============ LANGUAGE DROPDOWN ============ */}
@@ -99,7 +100,7 @@ function NavBar() {
           {/* ============ RIGHT SECTION (MOBILE) ============ */}
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
             <NavbarLanguagesDropdown />
-            <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
+            <IconButton aria-label='Menu button' onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>
             <NavbarDrawer open={open} toggleDrawer={toggleDrawer} />
@@ -107,7 +108,7 @@ function NavBar() {
         </StyledToolbar>
       </Container>
     </AppBar>
-  );
+  )
 }
 
-export default NavBar;
+export default NavBar

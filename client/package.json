@@ -7,17 +7,21 @@
     "dev": "nodemon --watch src --ext js,jsx,ts,tsx --exec vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "standard && node my-tests.js"
   },
   "dependencies": {
     "@emotion/react": "11.14.0",
     "@emotion/styled": "11.14.1",
-    "@mui/icons-material": "^9.0.0",
+    "@mui/icons-material": "9.0.0",
+    "@mui/lab": "9.0.0-beta.2",
     "@mui/material": "9.0.0",
-    "moment": "^2.30.1",
+    "date-fns": "4.1.0",
+    "lodash": "4.18.1",
+    "moment": "2.30.1",
     "react": "19.2.5",
     "react-dom": "19.2.5",
-    "react-i18next": "^17.0.6"
+    "react-i18next": "17.0.6"
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
@@ -29,6 +33,7 @@
     "eslint-plugin-react-refresh": "0.5.2",
     "globals": "17.5.0",
     "nodemon": "3.1.14",
+    "standard": "*",
     "vite": "8.0.10"
   }
 }
